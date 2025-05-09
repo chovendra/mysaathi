@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@layer utilities {
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      animation: marquee 40s linear infinite;
+    }
+  }
+  body {
+    /* background: #fcfaf5; */
+    font-family: 'Poppins', sans-serif; /* Default font for body */
+  }
+  @font-face {
+    font-family: "Poppins-Bold";
+    src: url(Poppins-Bolditalic.woff) format("truetype");
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+  }
+
+  
