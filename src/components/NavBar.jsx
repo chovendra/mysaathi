@@ -29,17 +29,17 @@ const NavBar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-5 items-center">
           <Link to="/" className={navItemClass("/")}>
-            Home
+            Matches
           </Link>
-          <Link to="/donate" className={navItemClass("/donate")}>
-            Donate
+          <Link to="/intrests" className={navItemClass("/intrests")}>
+            Intrests
           </Link>
-          <Link to="/about-us" className={navItemClass("/about-us")}>
-            About Us
+          <Link to="/" className={navItemClass("/")}>
+            Membership
           </Link>
-          <Link to="/contact" className={navItemClass("/contact")}>
+          {/* <Link to="/contact" className={navItemClass("/contact")}>
             Contact Us
-          </Link>
+          </Link> */}
           <Link to="/login">
             <button className="bg-blue-900 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-600 transition">
               Login / Signup

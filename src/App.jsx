@@ -15,7 +15,7 @@ import Profile from "./Profile/Profile";
 import TermsAndConditions from "./Policy/TermsAndConditions";
 import PrivacyP from "./Policy/PrivacyP";
 import ScrollToTop from "./TopScrolling/ScrollToTop";
-import Donate from "./Donate/Donate";
+import Donate from "./Donate/Intrests";
 import Cards from "./components/Cards";
 import DonateDetails from "./Donate/DonateDetails";
 import BlogDetails from "./BlogPages/BlogDetails";

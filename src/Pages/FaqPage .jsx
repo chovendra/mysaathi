@@ -68,19 +68,19 @@ const FaqPage = () => {
         <div className="flex justify-center items-center relative mb-6">
           {/* Left image */}
           <img
-            src="https://via.placeholder.com/80"
+            src="/public/images/a1.png"
             alt="left"
             className="rounded-full w-20 h-20 absolute left-1/2 transform -translate-x-[160%] opacity-50"
           />
           {/* Center image */}
           <img
-            src="https://via.placeholder.com/100"
+            src="/public/images/a2.png"
             alt="center"
             className="rounded-full w-24 h-24 z-10"
           />
           {/* Right image */}
           <img
-            src="https://via.placeholder.com/80"
+            src="/public/images/a3.png"
             alt="right"
             className="rounded-full w-20 h-20 absolute right-1/2 transform translate-x-[160%] opacity-50"
           />
