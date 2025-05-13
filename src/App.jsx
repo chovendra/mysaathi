@@ -31,6 +31,7 @@ import MedicalDetails from "./Registration/MedicalDetails";
 import UploadPhotos from "./Registration/UploadPhotos";
 import AboutYourself from "./Registration/AboutYourself";
 import FaqPage from "./Pages/FaqPage ";
+import Matches from "./Matches/Matches";
 // import { Home } from "lucide-react";
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/t" element={<TextMarquee />} />
           <Route path="/navbar" element={<NavBar />} />
-          <Route path="/about-us" element={<About_Us />} />
+          {/* <Route path="/about-us" element={<About_Us />} /> */}
           <Route path="/contact" element={<Contact_Us />} />
           {/* <Route path="/fundraise" element={<Fundraise/>}/> */}
           <Route path="/donate" element={<Donate />} />
@@ -75,6 +76,7 @@ function App() {
           <Route path="/uploadphotos" element={<UploadPhotos  />} />
           <Route path="/aboutyourself" element={<AboutYourself  />} />
           <Route path="/faq" element={<FaqPage />} />
+          <Route path="/matches" element={<Matches />} />
         </Routes>
 
         {!noFooterRoutes.includes(location.pathname) && <Footer />}

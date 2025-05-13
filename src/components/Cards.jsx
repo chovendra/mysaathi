@@ -14,39 +14,7 @@ const Cards = () => {
       achieved: "₹32,890",
       subtitle: "Bhopal | Profession | Age 28, Height 5'6 ,Mother Tongue",
     },
-    {
-      id: 2,
-      image: "/images/profile.png",
-      title: "Arvind Pandey",
-      hobby:
-        "Dreamer & Doer | Capturing moments, one click at a time Coffee lover, adventure seeker | Making memories, not excuses",
-      donors: 235,
-      goal: "₹51,224",
-      achieved: "₹32,890",
-      subtitle: "Bhopal | Profession | Age 28, Height 5'6 ,Mother Tongue",
-    },
-    {
-      id: 3,
-      image: "/images/profile.png",
-      title: "Arvind Pandey",
-      hobby:
-        "Dreamer & Doer | Capturing moments, one click at a time Coffee lover, adventure seeker | Making memories, not excuses",
-      donors: 235,
-      goal: "₹51,224",
-      achieved: "₹32,890",
-      subtitle: "Bhopal | Profession | Age 28, Height 5'6 ,Mother Tongue",
-    },
-    {
-      id: 4,
-      image: "/images/profile.png",
-      title: "Arvind Pandey",
-      hobby:
-        "Dreamer & Doer | Capturing moments, one click at a time Coffee lover, adventure seeker | Making memories, not excuses",
-      donors: 235,
-      goal: "₹51,224",
-      achieved: "₹32,890",
-      subtitle: "Bhopal | Profession | Age 28, Height 5'6 ,Mother Tongue",
-    },
+  
   ];
 
   const [visibleCards, setVisibleCards] = useState(9);
@@ -91,14 +59,14 @@ const Cards = () => {
       </div>
 
       {/* View All Button */}
-      <div className="text-center mt-6">
+      {/* <div className="text-center mt-6">
         <button
           onClick={showAllCards}
           className="bg-blue-900 text-white px-18 py-3 rounded-2xl hover:bg-blue-800 transition"
         >
           View All
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

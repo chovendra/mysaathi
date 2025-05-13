@@ -28,11 +28,14 @@ const NavBar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-5 items-center">
-          <Link to="/" className={navItemClass("/")}>
+          <Link to="/matches" className={navItemClass("/matches")}>
             Matches
           </Link>
           <Link to="/intrests" className={navItemClass("/intrests")}>
             Intrests
+          </Link>
+          <Link to="/chats" className={navItemClass("/chats")}>
+          Chats
           </Link>
           <Link to="/" className={navItemClass("/")}>
             Membership
