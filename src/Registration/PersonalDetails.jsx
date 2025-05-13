@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import ProgressBar from "../components/ProgressBar";
+import { useNavigate } from "react-router-dom";
+
 
 const PersonalDetails = () => {
   const [childrenCount, setChildrenCount] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
+  const navigate = useNavigate();
+
 
   const increaseCount = () => {
     setChildrenCount(childrenCount + 1);
@@ -15,23 +21,18 @@ const PersonalDetails = () => {
 
   return (
     <>
-      <div className="w-full h-[90px]"></div>
-      <div className="bg-gray-50 min-h-screen ">
+      <div className="w-full h-[110px] bg-white"></div>
+      <div className="bg-white min-h-screen overflow-y-auto">
         {/* Heading */}
         <h1 className="text-3xl font-bold text-center text-gray-800 ">
           Personal Details
         </h1>
 
         {/* Progress Dots */}
-        <div className="flex justify-center items-center gap-3 mt-4">
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-          <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-          <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-        </div>
+        <ProgressBar currentStep={currentStep} totalSteps={4} />
 
         {/* Form Section */}
-        <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md mt-6 space-y-5">
+        <div className="max-w-md mx-auto p-6 bg-white rounded-xl  mt-6 space-y-5 pb-36">
           {/* Gender */}
           <div>
             <label className="font-medium">
@@ -179,18 +180,23 @@ const PersonalDetails = () => {
             </select>
           </div>
         </div>
-        <div className="w-full h-[10vh]">
-
-        </div>
+       
 
         {/* Bottom Buttons */}
-        <div className="fixed bottom-0 left-0 mt-[10vh] w-full bg-blue-500  py-3 flex justify-evenly border-b-2">
-          <button className=" text-white font-medium px-4 py-2 border border-white rounded">
-            Cancel
+        <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
+          <button
+            onClick={() => setCurrentStep((prev) => Math.max(prev - 1, 1))}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+          >
+            Back
           </button>
-          <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">
-            Continue
+          <button
+            onClick={() => navigate("/hobbies")}
+            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+          >
+            Next
           </button>
+
         </div>
       </div>
     </>

@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import ProgressBar from "../components/ProgressBar";
+import { useNavigate } from "react-router-dom";
+
 
 const Hobbies = () => {
   const [selectedCreative, setSelectedCreative] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
+  const [currentStep, setCurrentStep] = useState(2); // Starting from step 2 for Hobbies page
+  const navigate = useNavigate();
 
-  const creativeOptions = ['Painting', 'Singing', 'Dancing', 'Writing', 'Photography', 'Cooking'];
-  const categoryOptions = ['Sports', 'Music', 'Travel', 'Technology', 'Gaming', 'Books'];
+
+  const creativeOptions = [
+    "Painting",
+    "Singing",
+    "Dancing",
+    "Writing",
+    "Photography",
+    "Cooking",
+  ];
+  const categoryOptions = [
+    "Sports",
+    "Music",
+    "Travel",
+    "Technology",
+    "Gaming",
+    "Books",
+  ];
 
   const toggleCreative = (hobby) => {
     if (selectedCreative.includes(hobby)) {
-      setSelectedCreative(selectedCreative.filter(item => item !== hobby));
+      setSelectedCreative(selectedCreative.filter((item) => item !== hobby));
     } else {
       setSelectedCreative([...selectedCreative, hobby]);
     }
@@ -17,7 +37,7 @@ const Hobbies = () => {
 
   const toggleCategory = (hobby) => {
     if (selectedCategory.includes(hobby)) {
-      setSelectedCategory(selectedCategory.filter(item => item !== hobby));
+      setSelectedCategory(selectedCategory.filter((item) => item !== hobby));
     } else {
       setSelectedCategory([...selectedCategory, hobby]);
     }
@@ -25,72 +45,82 @@ const Hobbies = () => {
 
   return (
     <>
-   <div className='w-full h-[90px]'></div>
-    <div className="bg-gray-50 min-h-auto">
+      <div className="w-full h-[110px] bg-white"></div>
+      <div className="bg-white min-h-auto">
+        {/* Heading */}
+        <h1 className="text-3xl font-bold text-center text-gray-800 ">
+          Your Hobbies
+        </h1>
 
-      {/* Heading */}
-      <h1 className="text-3xl font-bold text-center text-gray-800 ">Your Hobbies</h1>
+        {/* Progress Bar */}
+        <ProgressBar currentStep={currentStep} totalSteps={4} />
 
-      {/* Progress Dots */}
-      <div className="flex justify-center items-center gap-3 mt-4">
-        <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-        <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-        <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-        <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-      </div>
+        {/* Instructions */}
+        <p className="text-center text-gray-600 mt-4">
+          Please select at least 5 hobbies!
+        </p>
 
-      {/* Instructions */}
-      <p className="text-center text-gray-600 mt-4">Please select at least 5 hobbies!</p>
+        {/* Creative Section */}
+        <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-5 pb-36">
+          <h2 className="text-lg font-semibold text-gray-700">Creative</h2>
+          <div className="flex flex-wrap gap-3">
+            {creativeOptions.map((item, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => toggleCreative(item)}
+                className={`px-4 py-2 border rounded-full ${
+                  selectedCreative.includes(item)
+                    ? "bg-blue-900 text-white"
+                    : "border-gray-300 text-gray-700"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
 
-      {/* Creative Section */}
-      <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md mt-6 space-y-5">
-
-        <h2 className="text-lg font-semibold text-gray-700">Creative</h2>
-        <div className="flex flex-wrap gap-3">
-          {creativeOptions.map((item, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => toggleCreative(item)}
-              className={`px-4 py-2 border rounded-full ${
-                selectedCreative.includes(item)
-                  ? 'bg-blue-900 text-white'
-                  : 'border-gray-300 text-gray-700'
-              }`}
-            >
-              {item}
-            </button>
-          ))}
+          {/* Category Section */}
+          <h2 className="text-lg font-semibold text-gray-700 mt-6">
+            Category
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {categoryOptions.map((item, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => toggleCategory(item)}
+                className={`px-4 py-2 border rounded-full ${
+                  selectedCategory.includes(item)
+                    ? "bg-blue-900 text-white"
+                    : "border-gray-300 text-gray-700"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Category Section */}
-        <h2 className="text-lg font-semibold text-gray-700 mt-6">Category</h2>
-        <div className="flex flex-wrap gap-3">
-          {categoryOptions.map((item, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => toggleCategory(item)}
-              className={`px-4 py-2 border rounded-full ${
-                selectedCategory.includes(item)
-                  ? 'bg-blue-900 text-white'
-                  : 'border-gray-300 text-gray-700'
-              }`}
+        {/* Bottom Buttons */}
+        <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
+          <button
+            onClick={() => navigate("/")}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
             >
-              {item}
+            Back
             </button>
-          ))}
+
+            <button
+            onClick={() => alert("Next Page")}  // आगे का page बना कर इसका route कर लेना
+            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+            >
+            Next
+        </button>
+
         </div>
       </div>
-
-      {/* Bottom Buttons */}
-      <div className=" w-full bg-blue-900 p-4 flex justify-evenly border-b">
-        <button className="text-white font-medium px-4 py-2 border border-white rounded">Cancel</button>
-        <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">Continue</button>
-      </div>
-
-    </div>
-     </>
+    </>
   );
 };
 
