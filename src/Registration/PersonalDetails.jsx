@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import ProgressBar from "../components/ProgressBar";
 import { useNavigate } from "react-router-dom";
 
-
 const PersonalDetails = () => {
+  const [gender, setGender] = useState("");
+  const [dob, setDob] = useState("");
   const [childrenCount, setChildrenCount] = useState(0);
   const [currentStep, setCurrentStep] = useState(1);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
 
   const increaseCount = () => {
     setChildrenCount(childrenCount + 1);
@@ -19,6 +19,9 @@ const PersonalDetails = () => {
     }
   };
 
+  // form valid check
+  const formValid = gender && dob;
+
   return (
     <>
       <div className="w-full h-[110px] bg-white"></div>
@@ -28,21 +31,42 @@ const PersonalDetails = () => {
           Personal Details
         </h1>
 
-        {/* Progress Dots */}
-        <ProgressBar currentStep={currentStep} totalSteps={4} />
+        {/* Progress */}
+        <div className="flex items-center justify-center gap-2 mt-6">
+                  {[...Array(11)].map((_, index) => (
+                    <React.Fragment key={index}>
+                      <div
+                        className={`w-4 h-4 rounded-full ${
+                          index <= 0 ? "bg-blue-900" : "bg-gray-300"
+                        }`}
+                      ></div>
+                      {index < 10 && (
+                        <div
+                          className={`h-1 w-6 ${
+                            index <= -1 ? "bg-blue-900" : "bg-gray-300"
+                          }`}
+                        ></div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
 
-        {/* Form Section */}
-        <div className="max-w-md mx-auto p-6 bg-white rounded-xl  mt-6 space-y-5 pb-36">
+        {/* Form */}
+        <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-5 pb-36">
           {/* Gender */}
           <div>
             <label className="font-medium">
               Gender<span className="text-red-500">*</span>
             </label>
-            <select className="w-full border border-gray-300 rounded p-2 mt-1">
-              <option>Select Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-full border border-gray-300 rounded p-2 mt-1"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -53,6 +77,8 @@ const PersonalDetails = () => {
             </label>
             <input
               type="date"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
               className="w-full border border-gray-300 rounded p-2 mt-1"
             />
           </div>
@@ -133,7 +159,7 @@ const PersonalDetails = () => {
           </div>
 
           {/* Children */}
-          <div className=" rounded-xl">
+          <div>
             <label className="font-medium">Children, if any?</label>
             <div className="flex items-center mt-1">
               <button
@@ -149,7 +175,7 @@ const PersonalDetails = () => {
               <button
                 type="button"
                 onClick={increaseCount}
-                className="text-xl font-bold bg-gray-300 w-8  flex items-center justify-center rounded"
+                className="text-xl font-bold bg-gray-300 w-8 flex items-center justify-center rounded"
               >
                 +
               </button>
@@ -171,7 +197,7 @@ const PersonalDetails = () => {
 
           {/* Complexion */}
           <div>
-            <label className="font-medium mb-10">Complexion</label>
+            <label className="font-medium">Complexion</label>
             <select className="w-full border border-gray-300 rounded p-2 mt-1">
               <option>Select Complexion</option>
               <option>Fair</option>
@@ -180,23 +206,26 @@ const PersonalDetails = () => {
             </select>
           </div>
         </div>
-       
 
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
-          <button
-            onClick={() => setCurrentStep((prev) => Math.max(prev - 1, 1))}
-            className="text-white font-medium px-4 py-2 border border-white rounded"
-          >
-            Back
-          </button>
+           <button
+      onClick={() => navigate("/")}
+      className="text-white font-medium px-4 py-2 border border-white rounded"
+    >
+      Cancel
+    </button>
           <button
             onClick={() => navigate("/hobbies")}
-            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+            disabled={!formValid}
+            className={`font-medium px-6 py-2 rounded ${
+              !formValid
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-white text-blue-900"
+            }`}
           >
             Next
           </button>
-
         </div>
       </div>
     </>

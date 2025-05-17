@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Support_Info = () => {
   return (
-    <div className="w-full lg:px-12 px-6 py-12 md:py-20 flex flex-col lg:flex-row items-center lg:items-start gap-10">
+   <div className="max-w-screen-2xl m-auto lg:px-[8vw] ">
+     <div className=" w-full lg:px-12 px-6 py-12 md:py-20 flex flex-col lg:flex-row items-center lg:items-start gap-10">
       {/* Left Text Section */}
       <div className="w-full lg:w-1/2">
         <h1 className="text-blue-900 text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           <span className="text-black">Find your Special </span> Someone
         </h1>
-        <h4 className="text-base sm:text-lg md:text-xl mt-2 mb-4">A Mission to Save Lives</h4>
+        <h4 className="text-base sm:text-lg md:text-xl mt-2 mb-4">A beautiful beginning to your forever love story starts from here.</h4>
         <p className="text-[#666666] text-base sm:text-lg md:text-xl mt-5 max-w-xl">
-          GHEM or ‘Giving Hope Every Month’ is a monthly donation program that ensures patients in India receive timely access to life-saving treatment. GHEM or ‘Giving Hope Every Month’ is a monthly donation program that ensures patients in India receive timely access to life-saving treatment.
+          MySaathi is a beautiful platform crafted to bring hearts together and turn stories into lifelong journeys. Here, every connection begins with trust and blossoms into something meaningful. Discover your perfect partner where emotions matter more than profiles. It’s a space where genuine love, understanding, and companionship come first. Because every beautiful life deserves a beautiful partner to walk beside. ❤️
         </p>
 
         <Link to={"/donate"}>
@@ -33,14 +34,14 @@ const Support_Info = () => {
       {/* Right Icons Section */}
       <div className="w-full lg:w-[25vw] grid grid-cols-2 lg:gap-y-12 lg:gap-x-10 gap-y-12 justify-items-center">
         {[
-          { img: "BoxLogo1.png", label: "Complete Transparency" },
-          { img: "Boxlogo2.png", label: "Get 80G Tax Benefits" },
-          { img: "Boxlogo3.png", label: "Earn Exclusive Rewards" },
-          { img: "Boxlogo4.png", label: "See Your Impact" },
+          { img: "BoxLogo1.png", label: "Find your true match" },
+          { img: "Boxlogo2.png", label: "Love starts with trust" },
+          { img: "Boxlogo3.png", label: "Real connections matter" },
+          { img: "Boxlogo4.png", label: "Embrace lifelong journeys" },
         ].map((item, i) => (
           <div key={i} className="flex flex-col items-center">
             {/* Circle with image */}
-            <div className="w-24 h-24 sm:w-28 sm:h-28 bg-[#f9f0f0] rounded-full flex items-center justify-center">
+            <div className="w-24 h-24 sm:w-28 sm:h-28  rounded-full flex items-center justify-center" style={{ backgroundColor: " #D53269" }}>
               <img
                 className="w-12 sm:w-14 object-contain"
                 src={`/images/${item.img}`}
@@ -49,13 +50,14 @@ const Support_Info = () => {
             </div>
 
             {/* Text below circle */}
-            <span className="mt-3 text-center text-sm text-gray-600 w-28">
+            <span className="mt-3 text-center text-sm w-28">
               {item.label}
             </span>
           </div>
         ))}
       </div>
     </div>
+   </div>
   );
 };
 

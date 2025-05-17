@@ -1,7 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Qualifications = () => {
+  const [currentCompany, setCurrentCompany] = useState("");
   const [workingSince, setWorkingSince] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    if (currentCompany.trim() === "" || workingSince.trim() === "") {
+      alert("Please fill all required fields.");
+      return;
+    }
+    navigate("/contactdetails"); 
+  };
+
+  const handleBack = () => {
+    navigate(-1); 
+  };
 
   return (
     <>
@@ -15,19 +31,22 @@ const Qualifications = () => {
 
         {/* Progress Bar */}
         <div className="flex items-center justify-center gap-2 mt-6">
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  index <= 6 ? "bg-blue-900" : "bg-gray-300"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-1 w-6 ${
+                    index <= 5 ? "bg-blue-900" : "bg-gray-300"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
 
         {/* Subheading */}
@@ -37,9 +56,9 @@ const Qualifications = () => {
 
         {/* Form */}
         <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-6">
-
-          {/* Education */}
-          <h2 className="font-semibold text-gray-800 text-lg">Let us know more about your education and profession</h2>
+          <h2 className="font-semibold text-gray-800 text-lg">
+            Let us know more about your education and profession
+          </h2>
           <h2 className="font-semibold text-gray-800 text-lg">Education</h2>
 
           <div>
@@ -62,7 +81,6 @@ const Qualifications = () => {
             />
           </div>
 
-          {/* Work Experience */}
           <h2 className="font-semibold text-gray-800 text-lg">
             Professional Work Experience
           </h2>
@@ -87,10 +105,12 @@ const Qualifications = () => {
 
           <div>
             <label className="block font-medium text-gray-700 mb-1">
-              Current Company*
+              Current Company<span className="text-red-600">*</span>
             </label>
             <input
               type="text"
+              value={currentCompany}
+              onChange={(e) => setCurrentCompany(e.target.value)}
               placeholder="Enter company name"
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
@@ -98,7 +118,7 @@ const Qualifications = () => {
 
           <div>
             <label className="block font-medium text-gray-700 mb-1">
-              Working Since*
+              Working Since<span className="text-red-600">*</span>
             </label>
             <input
               type="date"
@@ -150,10 +170,16 @@ const Qualifications = () => {
 
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-900 py-3 flex justify-evenly">
-          <button className="text-white font-medium px-4 py-2 border border-white rounded">
-            Cancel
+          <button
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+            onClick={handleBack}
+          >
+            Back
           </button>
-          <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">
+          <button
+            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+            onClick={handleContinue}
+          >
             Continue
           </button>
         </div>

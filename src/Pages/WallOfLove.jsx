@@ -82,7 +82,7 @@ const WallOfLove = () => {
               alt={person.name}
               className="w-70 h-50  object-cover mb-4 "
             />
-            <h2 className="text-xl font-bold text-blue-700">{person.name}</h2>
+            <h2 className="text-xl font-bold text-blue-900">{person.name}</h2>
             {/* <p className="text-gray-500 text-xs">{person.title}</p> */}
             <p className="mt-4 text-gray-700 text-center w-[90%] text-sm">{person.description}</p>
           </div>

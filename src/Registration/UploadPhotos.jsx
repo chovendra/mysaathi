@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import ProgressBar from "../components/ProgressBar";
+import { useNavigate } from "react-router-dom";
 
 const UploadPhotos = () => {
+  const navigate = useNavigate();
+
   const [currentStep, setCurrentStep] = useState(10);
   const [profilePic, setProfilePic] = useState(null);
   const [additionalPhotos, setAdditionalPhotos] = useState(Array(6).fill(null));
@@ -28,19 +30,55 @@ const UploadPhotos = () => {
     reader.readAsDataURL(file);
   };
 
+  // Navigation handlers
+  const handleContinue = () => {
+    if (!profilePic) {
+      alert("Please upload a Profile Picture.");
+      return;
+    }
+
+    const hasIDProof = idProofs.some((proof) => proof !== null);
+    if (!hasIDProof) {
+      alert("Please upload at least one ID Proof.");
+      return;
+    }
+
+    // You can either update current step or navigate to next page
+    setCurrentStep((prev) => Math.min(prev + 1, 12));
+    navigate("/aboutyourself"); 
+  };
+
+  const handleCancel = () => {
+    navigate(-1); 
+  };
+
   return (
     <>
       <div className="w-full h-[110px] bg-white"></div>
       <div className="bg-white min-h-auto">
-        {/* Heading */}
         <h1 className="text-3xl font-bold text-center text-gray-800">
           Upload Photos
         </h1>
 
-        {/* Progress Bar */}
-        <ProgressBar currentStep={currentStep} totalSteps={12} />
+        <div className="flex items-center justify-center gap-2 mt-6">
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  index <= 9 ? "bg-blue-900" : "bg-gray-300"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-1 w-6 ${
+                    index <= 8 ? "bg-blue-900" : "bg-gray-300"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
 
-        {/* Instructions */}
         <h1 className="text-2xl font-semibold text-gray-700 mt-6 text-center">
           Upload photos of you and your family.
         </h1>
@@ -48,12 +86,16 @@ const UploadPhotos = () => {
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl mt-6 space-y-6 pb-36">
           {/* Profile Picture */}
           <h2 className="text-lg font-semibold text-center text-gray-700">
-            Profile Picture
+            Profile Picture<span className="text-red-500">*  </span>
           </h2>
           <div className="flex justify-center">
             <label className="w-32 h-32 border-2 border-gray-300 rounded-lg flex items-center justify-center text-gray-400 cursor-pointer overflow-hidden">
               {profilePic ? (
-                <img src={profilePic} alt="Profile" className="object-cover w-full h-full" />
+                <img
+                  src={profilePic}
+                  alt="Profile"
+                  className="object-cover w-full h-full"
+                />
               ) : (
                 "+"
               )}
@@ -77,7 +119,11 @@ const UploadPhotos = () => {
                 className="w-full h-24 border-2 border-gray-300 rounded-lg flex items-center justify-center text-gray-400 cursor-pointer overflow-hidden"
               >
                 {photo ? (
-                  <img src={photo} alt={`Additional ${index}`} className="object-cover w-full h-full" />
+                  <img
+                    src={photo}
+                    alt={`Additional ${index}`}
+                    className="object-cover w-full h-full"
+                  />
                 ) : (
                   "+"
                 )}
@@ -85,7 +131,9 @@ const UploadPhotos = () => {
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  onChange={(e) => handleImageChange(e, setAdditionalPhotos, index)}
+                  onChange={(e) =>
+                    handleImageChange(e, setAdditionalPhotos, index)
+                  }
                 />
               </label>
             ))}
@@ -102,7 +150,11 @@ const UploadPhotos = () => {
                 className="w-full h-24 border-2 border-gray-300 rounded-lg flex items-center justify-center text-gray-400 cursor-pointer overflow-hidden"
               >
                 {photo ? (
-                  <img src={photo} alt={`Family ${index}`} className="object-cover w-full h-full" />
+                  <img
+                    src={photo}
+                    alt={`Family ${index}`}
+                    className="object-cover w-full h-full"
+                  />
                 ) : (
                   "+"
                 )}
@@ -118,7 +170,7 @@ const UploadPhotos = () => {
 
           {/* ID Proofs */}
           <h2 className="text-lg font-semibold text-gray-700 mt-4">
-            Upload ID Proofs (Adhaar Card, Pan Card)
+            Upload ID Proofs (Adhaar Card, Pan Card)<span className="text-red-500">*  </span>
           </h2>
           <div className="grid grid-cols-3 gap-4">
             {idProofs.map((photo, index) => (
@@ -127,7 +179,11 @@ const UploadPhotos = () => {
                 className="w-full h-24 border-2 border-gray-300 rounded-lg flex items-center justify-center text-gray-400 cursor-pointer overflow-hidden"
               >
                 {photo ? (
-                  <img src={photo} alt={`ID ${index}`} className="object-cover w-full h-full" />
+                  <img
+                    src={photo}
+                    alt={`ID ${index}`}
+                    className="object-cover w-full h-full"
+                  />
                 ) : (
                   "+"
                 )}
@@ -150,13 +206,13 @@ const UploadPhotos = () => {
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-900 py-3 flex justify-evenly">
           <button
-            onClick={() => setCurrentStep((prev) => Math.max(prev - 1, 1))}
+            onClick={handleCancel}
             className="text-white font-medium px-4 py-2 border border-white rounded"
           >
-            Cancel
+            Back
           </button>
           <button
-            onClick={() => setCurrentStep((prev) => Math.min(prev + 1, 12))}
+            onClick={handleContinue}
             className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
           >
             Continue

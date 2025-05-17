@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PartnerPreferences = () => {
   const [ageFrom, setAgeFrom] = useState("");
@@ -11,40 +12,68 @@ const PartnerPreferences = () => {
   const [complexion, setComplexion] = useState("");
   const [expectations, setExpectations] = useState("");
 
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    // Validation check
+    if (
+      !ageFrom ||
+      !ageTo ||
+      !height ||
+      !caste ||
+      !motherTongue ||
+      !expectations
+    ) {
+      alert("Please fill all the required fields marked with *");
+      return;
+    }
+
+    // Navigate to next page (replace '/next-page' with your actual route)
+    navigate("/astrological");
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <div className="w-full h-[110px] bg-white"></div>
 
       <div className="bg-white min-h-auto pb-36">
-        {/* Heading */}
         <h1 className="text-3xl font-bold text-center text-gray-800">
           Partner Preferences
         </h1>
 
         {/* Progress Bar */}
         <div className="flex items-center justify-center gap-2 mt-6">
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-            <div className="h-1 w-10 bg-blue-900"></div>
-            <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-            <div className="h-1 w-10 bg-blue-900"></div>
-            <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-            <div className="h-1 w-10 bg-blue-900"></div>
-            <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-            <div className="h-1 w-10 bg-blue-900"></div>
-            <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  index <= 4 ? "bg-blue-900" : "bg-gray-300"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-1 w-6 ${
+                    index <= 3 ? "bg-blue-900" : "bg-gray-300"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
 
-        {/* Subheading */}
         <p className="text-center text-gray-600 mt-4">
           Let us know what you are looking in your partner.
         </p>
 
-        {/* Form Section */}
         <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-6">
           {/* Age From */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Age From
+              Age From<span className="text-red-500">*  </span>
             </label>
             <select
               value={ageFrom}
@@ -63,7 +92,7 @@ const PartnerPreferences = () => {
           {/* Age To */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Age To
+              Age To<span className="text-red-500">*  </span>
             </label>
             <select
               value={ageTo}
@@ -82,7 +111,7 @@ const PartnerPreferences = () => {
           {/* Height */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Height (In Cms)*
+              Height (In Cms)<span className="text-red-500">*  </span>
             </label>
             <input
               type="number"
@@ -95,7 +124,7 @@ const PartnerPreferences = () => {
 
           {/* Caste */}
           <div>
-            <label className="font-medium text-gray-700 mb-1 block">Caste*</label>
+            <label className="font-medium text-gray-700 mb-1 block">Caste<span className="text-red-500">*  </span></label>
             <select
               value={caste}
               onChange={(e) => setCaste(e.target.value)}
@@ -129,7 +158,7 @@ const PartnerPreferences = () => {
           {/* Mother Tongue */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Mother Tongue*
+              Mother Tongue<span className="text-red-500">*  </span>
             </label>
             <input
               type="text"
@@ -181,7 +210,7 @@ const PartnerPreferences = () => {
           {/* Partner Expectations */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Partner Expectations*
+              Partner Expectations<span className="text-red-500">*  </span>
             </label>
             <textarea
               value={expectations}
@@ -195,10 +224,16 @@ const PartnerPreferences = () => {
 
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-900 py-3 flex justify-evenly">
-          <button className="text-white font-medium px-4 py-2 border border-white rounded">
-            Cancel
+          <button
+            onClick={handleBack}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+          >
+            Back
           </button>
-          <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">
+          <button
+            onClick={handleContinue}
+            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+          >
             Continue
           </button>
         </div>

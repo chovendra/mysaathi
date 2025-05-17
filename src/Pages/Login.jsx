@@ -27,21 +27,22 @@ const Login = () => {
     <>
     <div className='w-full h-[47px]'></div>
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
-      {/* Left Side (hidden on small screens) */}
-      <div
-        className="hidden lg:block lg:w-1/2 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('/square/1.jpg')",
-        }}
-      ></div>
+     <div
+  className="hidden lg:block lg:w-1/2 bg-cover bg-no-repeat"
+  style={{
+    backgroundImage: "url('/images/hand.jpg')",
+    backgroundPosition: "center center",
+  }}
+></div>
+
+
 
       {/* Right Side (Form) */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6">
         <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-10 overflow-y-auto">
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-              <img src="/images/logo.png" alt="Logo" />
+            <div className="inline-flex items-center justify-center w-28 h-16 bg-red-100 rounded-full mb-4">
+              <img src="/images/saathi.jpg" alt="Logo" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800">
               {isLogin ? 'Welcome Back!' : 'Create Account'}

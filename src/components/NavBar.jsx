@@ -14,32 +14,41 @@ const NavBar = () => {
     }`;
 
   return (
-    <nav className="bg-white fixed shadow-orange-300 shadow-md z-20 w-full">
-      <div className="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-10 flex items-center justify-between">
+    <nav className="bg-white fixed shadow-blue-300 shadow-md z-20 w-[100%]">
+      <div className="max-w-7xl mx-auto py-2 lg:py-5 px-4 sm:px-6 lg:px-10 flex items-center justify-between  lg:h-[80px] overflow-hidden">
         {/* Logo */}
         <Link to="/" onClick={() => setIsOpen(false)}>
         <img
         src="/images/saathi.jpg"
         alt="Logo"
-        className="h-28 w-28 lg:h-18 lg:w-32 object-cover"
+        className=" lg:h-[100px] lg:w-[100px] object-cover object-center"
       />
+
+
+
 
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-5 items-center">
+          <Link to="/" className={navItemClass("/")}>
+            Home
+          </Link>
           <Link to="/matches" className={navItemClass("/matches")}>
             Matches
           </Link>
-          <Link to="/intrests" className={navItemClass("/intrests")}>
+          {/* <Link to="/intrests" className={navItemClass("/intrests")}>
             Intrests
+          </Link> */}
+          <Link to="/mailbox" className={navItemClass("/mailbox")}>
+            Mails
           </Link>
           <Link to="/chats" className={navItemClass("/chats")}>
           Chats
           </Link>
-          <Link to="/" className={navItemClass("/")}>
+          {/* <Link to="/membership" className={navItemClass("/membership")}>
             Membership
-          </Link>
+          </Link> */}
           {/* <Link to="/contact" className={navItemClass("/contact")}>
             Contact Us
           </Link> */}
@@ -71,26 +80,27 @@ const NavBar = () => {
           >
             Home
           </Link>
+          
           <Link
-            to="/donate"
+            to="/matches"
             onClick={() => setIsOpen(false)}
-            className={navItemClass("/donate")}
+            className={navItemClass("/matches")}
           >
-            Donate
+            Matches
           </Link>
           <Link
-            to="/about-us"
+            to="/mailbox"
             onClick={() => setIsOpen(false)}
-            className={navItemClass("/about-us")}
+            className={navItemClass("/mailbox")}
           >
-            About Us
+            Mails
           </Link>
           <Link
-            to="/contact"
+            to="/chats"
             onClick={() => setIsOpen(false)}
-            className={navItemClass("/contact")}
+            className={navItemClass("/chats")}
           >
-            Contact Us
+            Chats
           </Link>
           <Link to="/login" onClick={() => setIsOpen(false)}>
             <button className="w-full bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">

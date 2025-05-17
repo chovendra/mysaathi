@@ -32,6 +32,10 @@ import UploadPhotos from "./Registration/UploadPhotos";
 import AboutYourself from "./Registration/AboutYourself";
 import FaqPage from "./Pages/FaqPage ";
 import Matches from "./Matches/Matches";
+import Notifications from "./Pages/Notifications";
+import Chats from "./Chats/chats";
+import MailBox from "./Mailbox/MailBox";
+import MatcheDetails from "./Matches/MatcheDetails";
 // import { Home } from "lucide-react";
 
 function App() {
@@ -41,7 +45,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="">
         <ScrollToTop />
         <NavBar />
         <Routes>
@@ -77,6 +81,10 @@ function App() {
           <Route path="/aboutyourself" element={<AboutYourself  />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/matches" element={<Matches />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/chats" element={<Chats />} />
+          <Route path="/mailbox" element={<MailBox />} />
+          <Route path="/matchedetails" element={<MatcheDetails />} />
         </Routes>
 
         {!noFooterRoutes.includes(location.pathname) && <Footer />}
