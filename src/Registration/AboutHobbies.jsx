@@ -1,103 +1,99 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AboutHobbies = () => {
   const [alcohol, setAlcohol] = useState("");
   const [smoke, setSmoke] = useState("");
   const [eatingHabit, setEatingHabit] = useState("");
 
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    if (alcohol && smoke && eatingHabit) {
+      navigate("/familydetails");
+    }
+  };
+
+  const handleBack = () => {
+    navigate("/hobbies"); 
+  };
+
   return (
     <>
       <div className="w-full h-[110px] bg-white"></div>
 
       <div className="bg-white min-h-auto pb-45">
-        {/* Heading */}
         <h1 className="text-3xl font-bold text-center text-gray-800">
           More About Hobbies
         </h1>
 
-        {/* Progress Bar */}
         <div className="flex items-center justify-center gap-2 mt-6">
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-gray-300"></div>
-          <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  index <= 2 ? "bg-blue-900" : "bg-gray-300"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-1 w-6 ${
+                    index <= 1 ? "bg-blue-900" : "bg-gray-300"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
 
-        {/* Subheading */}
         <p className="text-center text-gray-600 mt-4">
           Let us know more about your hobbies
         </p>
 
-        {/* Questions */}
         <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-6">
-
-          {/* Alcohol */}
           <div>
-            <h2 className="font-medium text-gray-700 mb-2">Do you drink alcohol?</h2>
+            <h2 className="font-medium text-gray-700 mb-2">Do you drink alcohol?<span className="text-red-500">*  </span></h2>
             <div className="flex gap-6">
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="alcohol"
-                  value="yes"
-                  checked={alcohol === "yes"}
-                  onChange={() => setAlcohol("yes")}
-                  className="w-5 h-5 accent-blue-900"
-                />
-                Yes
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="alcohol"
-                  value="no"
-                  checked={alcohol === "no"}
-                  onChange={() => setAlcohol("no")}
-                  className="w-5 h-5 accent-blue-900"
-                />
-                No
-              </label>
+              {["yes", "no"].map((val) => (
+                <label key={val} className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="alcohol"
+                    value={val}
+                    checked={alcohol === val}
+                    onChange={() => setAlcohol(val)}
+                    className="w-5 h-5 accent-blue-900"
+                  />
+                  {val}
+                </label>
+              ))}
             </div>
           </div>
 
-          {/* Smoke */}
           <div>
-            <h2 className="font-medium text-gray-700 mb-2">Do you smoke?</h2>
+            <h2 className="font-medium text-gray-700 mb-2">Do you smoke?<span className="text-red-500">*  </span></h2>
             <div className="flex gap-6">
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="smoke"
-                  value="yes"
-                  checked={smoke === "yes"}
-                  onChange={() => setSmoke("yes")}
-                  className="w-5 h-5 accent-blue-900"
-                />
-                Yes
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="smoke"
-                  value="no"
-                  checked={smoke === "no"}
-                  onChange={() => setSmoke("no")}
-                  className="w-5 h-5 accent-blue-900"
-                />
-                No
-              </label>
+              {["yes", "no"].map((val) => (
+                <label key={val} className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="smoke"
+                    value={val}
+                    checked={smoke === val}
+                    onChange={() => setSmoke(val)}
+                    className="w-5 h-5 accent-blue-900"
+                  />
+                  {val}
+                </label>
+              ))}
             </div>
           </div>
 
-          {/* Eating Habits */}
           <div>
-            <h2 className="font-medium text-gray-700 mb-2">Eating Habits?</h2>
+            <h2 className="font-medium text-gray-700 mb-2">Eating Habits?<span className="text-red-500">*  </span></h2>
             <div className="flex flex-wrap gap-4">
-              {["Veg", "Non-Veg", "Eggetarian", "Vegan"].map((item, index) => (
-                <label key={index} className="flex items-center gap-2">
+              {["Veg", "Non-Veg", "Eggetarian", "Vegan"].map((item) => (
+                <label key={item} className="flex items-center gap-2">
                   <input
                     type="radio"
                     name="eating"
@@ -115,10 +111,22 @@ const AboutHobbies = () => {
 
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
-          <button className="text-white font-medium px-4 py-2 border border-white rounded">
+          <button
+            onClick={handleBack}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+          >
             Back
           </button>
-          <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">
+
+          <button
+            onClick={handleNext}
+            disabled={!alcohol || !smoke || !eatingHabit}
+            className={`font-medium px-6 py-2 rounded ${
+              alcohol && smoke && eatingHabit
+                ? "text-blue-900 bg-white"
+                : "text-gray-300 bg-gray-100 cursor-not-allowed"
+            }`}
+          >
             Next
           </button>
         </div>

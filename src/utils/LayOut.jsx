@@ -15,7 +15,7 @@ import Cards from '../components/Cards';
 
 const LayOut = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full bg-white'>
         {/* <NavBar /> */}
 
         <Home />
@@ -25,12 +25,21 @@ const LayOut = () => {
         <DonateFillter />
 
         {/* <Cause /> */}
-        <div className='w-full px-10 bg-[#FDF5F3]'>
+        <div className='w-full px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-[#FDF5F3]'>
 
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
         <Cards />
         
         </div>
+        <div className="max-w-screen-2xl mx-auto px-5 lg:px-0">
         <About />
+        </div>
         <WallOfLove />
         {/* <Blog /> */}
         <GetInTouch />

@@ -1,8 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Astrological = () => {
   const [fileName, setFileName] = useState("");
   const [dosha, setDosha] = useState("");
+  const [formData, setFormData] = useState({
+    star: "",
+    gothram: "",
+    padham: "",
+    placeOfBirth: "",
+    timeOfBirth: "",
+  });
+
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -11,6 +21,32 @@ const Astrological = () => {
     } else {
       setFileName("");
     }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleContinue = () => {
+    // Validation
+    if (
+      !formData.star ||
+      !formData.gothram ||
+      !formData.padham ||
+      !formData.placeOfBirth ||
+      !formData.timeOfBirth ||
+      !dosha
+    ) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
+    
+    navigate("/qualifications");
+  };
+
+  const handleBack = () => {
+    navigate(-1); 
   };
 
   return (
@@ -23,19 +59,23 @@ const Astrological = () => {
           Astrological Details
         </h1>
 
-        {/* Progress Bar */}
         <div className="flex items-center justify-center gap-2 mt-6">
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  index <= 5 ? "bg-blue-900" : "bg-gray-300"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-1 w-6 ${
+                    index <= 4 ? "bg-blue-900" : "bg-gray-300"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
 
         {/* Subheading */}
@@ -47,9 +87,12 @@ const Astrological = () => {
         <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-6">
           {/* Star */}
           <div>
-            <label className="font-medium text-gray-700 mb-1 block">Star</label>
+            <label className="font-medium text-gray-700 mb-1 block">Star<span className="text-red-500">*  </span></label>
             <input
               type="text"
+              name="star"
+              value={formData.star}
+              onChange={handleChange}
               placeholder="Enter your star"
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
@@ -57,9 +100,12 @@ const Astrological = () => {
 
           {/* Gothram */}
           <div>
-            <label className="font-medium text-gray-700 mb-1 block">Gothram</label>
+            <label className="font-medium text-gray-700 mb-1 block">Gothram<span className="text-red-500">*  </span></label>
             <input
               type="text"
+              name="gothram"
+              value={formData.gothram}
+              onChange={handleChange}
               placeholder="Enter your Gothram"
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
@@ -67,9 +113,12 @@ const Astrological = () => {
 
           {/* Padham */}
           <div>
-            <label className="font-medium text-gray-700 mb-1 block">Padham</label>
+            <label className="font-medium text-gray-700 mb-1 block">Padham<span className="text-red-500">*  </span></label>
             <input
               type="text"
+              name="padham"
+              value={formData.padham}
+              onChange={handleChange}
               placeholder="Enter your Padham"
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
@@ -77,9 +126,12 @@ const Astrological = () => {
 
           {/* Place of Birth */}
           <div>
-            <label className="font-medium text-gray-700 mb-1 block">Place of Birth</label>
+            <label className="font-medium text-gray-700 mb-1 block">Place of Birth<span className="text-red-500">*  </span></label>
             <input
               type="text"
+              name="placeOfBirth"
+              value={formData.placeOfBirth}
+              onChange={handleChange}
               placeholder="Enter Place of Birth"
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
@@ -87,21 +139,21 @@ const Astrological = () => {
 
           {/* Time of Birth */}
           <div>
-            <label className="font-medium text-gray-700 mb-1 block">Time of Birth*</label>
+            <label className="font-medium text-gray-700 mb-1 block">Time of Birth<span className="text-red-500">*  </span></label>
             <input
               type="date"
+              name="timeOfBirth"
+              value={formData.timeOfBirth}
+              onChange={handleChange}
               className="w-full border border-gray-300 rounded px-3 py-2"
             />
           </div>
-
 
           {/* Upload Horoscope */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
               Upload Horoscope (pdf, png, jpeg, jpg etc.)
             </label>
-
-            {/* Custom File Input */}
             <div className="flex items-center gap-4">
               <label className="bg-blue-900 text-white px-4 py-2 rounded cursor-pointer">
                 Choose File
@@ -112,8 +164,6 @@ const Astrological = () => {
                   className="hidden"
                 />
               </label>
-
-              {/* File Name */}
               <span className="text-gray-700 text-sm truncate max-w-[150px]">
                 {fileName ? fileName : "No file chosen"}
               </span>
@@ -122,7 +172,7 @@ const Astrological = () => {
 
           {/* Dosha */}
           <div>
-            <label className="font-medium text-gray-700 mb-2 block">Dosha</label>
+            <label className="font-medium text-gray-700 mb-2 block">Dosha<span className="text-red-500">*  </span></label>
             <div className="flex gap-6">
               <label className="flex items-center gap-2">
                 <input
@@ -163,10 +213,16 @@ const Astrological = () => {
 
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
-          <button className="text-white font-medium px-4 py-2 border border-white rounded">
-            Cancel
+          <button
+            onClick={handleBack}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+          >
+            Back
           </button>
-          <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">
+          <button
+            onClick={handleContinue}
+            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+          >
             Continue
           </button>
         </div>

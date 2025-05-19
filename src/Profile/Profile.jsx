@@ -18,10 +18,10 @@ const Profile = () => {
         <section class="bg-white p-1 xs:p-8 w-full rounded-lg">
           <div class=" max-w-96 sm:max-w-4xl mx-auto  p-8">
           <h1 className="text-black font-bold text-3xl m-5">My Profile</h1>
-            <div className="w-full h-[105px]">
+            <div className="w-full h-[250px]">
               <img
                 className="w-full h-full rounded-t-md object-cover"
-                src="/HeaderImages/5.jpg"
+                src="/images/boy.jpg"
                 alt=""
               />
             </div>
@@ -37,11 +37,11 @@ const Profile = () => {
             className="w-14 h-14 rounded-full object-cover object-center"
           />
           <div>
-            <h2 className="text-lg font-semibold">Sakshi Sharma</h2>
-            <p className="text-sm text-gray-500">SakshiSharma@gmail.com</p>
+            <h2 className="text-lg font-semibold">Arvind Pandey</h2>
+            <p className="text-sm text-gray-500">ArvindPandey@gmail.com</p>
           </div>
         </div>
-        <button className="bg-orange-500 text-white px-4 py-2 rounded cursor-pointer">Edit</button>
+        <button className=" text-white px-4 py-2 rounded cursor-pointer" style={{ backgroundColor: "#D53269" }}>Edit</button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -171,12 +171,12 @@ const Profile = () => {
       <div className="w-full flex justify-between items-center mt-8 flex-wrap">
       <div className="mt-6">
         <p className="font-semibold text-gray-800 mb-2 ">Donate in Sanyogita Trust</p>
-        <button className="bg-orange-300 text-white px-5 py-2 rounded cursor-pointer">Donate now</button>
+        <button className=" text-white px-5 py-2 rounded cursor-pointer" style={{ backgroundColor: "#D53269" }}>Donate now</button>
       </div>
 
       <div className="mt-6 flex justify-end space-x-4">
         <button className="border border-gray-400 px-5 py-2 rounded text-gray-700 cursor-pointer">Cancel</button>
-        <button className="bg-orange-500 text-white px-5 py-2 rounded cursor-pointer">Save</button>
+        <button className=" text-white px-5 py-2 rounded cursor-pointer" style={{ backgroundColor: "#D53269" }}>Save</button>
       </div>
       
       </div>

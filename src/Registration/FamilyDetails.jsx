@@ -1,11 +1,35 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FamilyDetails = () => {
+  const navigate = useNavigate();
+
   const [fatherProfession, setFatherProfession] = useState("");
   const [motherProfession, setMotherProfession] = useState("");
   const [siblings, setSiblings] = useState("");
   const [marriedSiblings, setMarriedSiblings] = useState("");
   const [fashionStyle, setFashionStyle] = useState("");
+
+  // Validation & Navigation
+  const handleContinue = () => {
+    if (
+      !fatherProfession.trim() ||
+      !motherProfession.trim() ||
+      !siblings.trim() ||
+      marriedSiblings === "" ||
+      fashionStyle === ""
+    ) {
+      alert("Please fill all the required fields!");
+      return;
+    }
+
+    
+    navigate("/partnerpreferences");  
+  };
+
+  const handleBack = () => {
+    navigate(-1);  
+  };
 
   return (
     <>
@@ -19,13 +43,22 @@ const FamilyDetails = () => {
 
         {/* Progress Bar */}
         <div className="flex items-center justify-center gap-2 mt-6">
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
-          <div className="h-1 w-10 bg-blue-900"></div>
-          <div className="w-4 h-4 bg-blue-900 rounded-full"></div>
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  index <= 3 ? "bg-blue-900" : "bg-gray-300"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-1 w-6 ${
+                    index <= 2 ? "bg-blue-900" : "bg-gray-300"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
         </div>
 
         {/* Subheading */}
@@ -38,7 +71,7 @@ const FamilyDetails = () => {
           {/* Father's Profession */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Father's Profession
+              Father's Profession<span className="text-red-500">*  </span>
             </label>
             <input
               type="text"
@@ -52,7 +85,7 @@ const FamilyDetails = () => {
           {/* Mother's Profession */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Mother's Profession
+              Mother's Profession<span className="text-red-500">*  </span>
             </label>
             <input
               type="text"
@@ -66,7 +99,7 @@ const FamilyDetails = () => {
           {/* Number of Siblings */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              No. of Siblings
+              No. of Siblings<span className="text-red-500">*  </span>
             </label>
             <input
               type="number"
@@ -80,7 +113,7 @@ const FamilyDetails = () => {
           {/* Married Siblings */}
           <div>
             <label className="font-medium text-gray-700 mb-1 block">
-              Of which how many are married?
+              Of which how many are married?<span className="text-red-500">*  </span>
             </label>
             <select
               value={marriedSiblings}
@@ -99,7 +132,7 @@ const FamilyDetails = () => {
           {/* Fashion Style */}
           <div>
             <label className="font-medium text-gray-700 mb-2 block">
-              Fashion Style?
+              Fashion Style?<span className="text-red-500">*  </span>
             </label>
             <div className="flex gap-6">
               {["Traditional", "Western", "Both"].map((style, index) => (
@@ -121,10 +154,16 @@ const FamilyDetails = () => {
 
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full bg-blue-900 py-3 flex justify-evenly">
-          <button className="text-white font-medium px-4 py-2 border border-white rounded">
-            Cancel
+          <button
+            onClick={handleBack}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+          >
+            Back
           </button>
-          <button className="text-blue-900 font-medium bg-white px-6 py-2 rounded">
+          <button
+            onClick={handleContinue}
+            className="text-blue-900 font-medium bg-white px-6 py-2 rounded"
+          >
             Continue
           </button>
         </div>
