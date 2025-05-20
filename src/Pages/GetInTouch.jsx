@@ -63,7 +63,7 @@ const GetInTouch = () => {
             </div>
           </div>
           <div className="bg-white shadow-lg rounded-xl flex items-center gap-4 p-5 hover:shadow-2xl transition-all">
-            <div className="w-14 h-14 flex items-center justify-center bg-green-100 rounded-full">
+            <div className="w-25 h-15 flex items-center justify-center bg-green-100 rounded-full">
               <img
                 width="42"
                 height="42"

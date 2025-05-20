@@ -63,7 +63,7 @@ const Login = () => {
                   onChange={(e) => setName(e.target.value)}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:outline-none"
-                  placeholder="John Doe"
+                  placeholder="Enter Your Name"
                 />
               </div>
             )}
@@ -77,7 +77,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:outline-none"
-                placeholder="you@example.com"
+                placeholder="Email Address"
               />
               {email && !validateEmail(email) && (
                 <p className="text-sm text-red-600 mt-1">Enter a valid email</p>

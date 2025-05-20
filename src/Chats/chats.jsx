@@ -34,6 +34,24 @@ const Chats = () => {
     1: [
       { from: 'me', text: 'Hey Rahul, kya haal hai?' },
       { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
+      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
+      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
     ],
     2: [
       { from: 'me', text: 'Hey Ananya, project bhej dena.' },
@@ -47,11 +65,16 @@ const Chats = () => {
 
   return (
     <>
-      <div className="w-full h-[70px]" />
-      <div className="flex flex-col md:flex-row h-[calc(100vh-70px)] bg-gray-200">
+      <div className="w-full h-[75px]" />
+
+      <div className="flex h-[calc(100vh-75px)] bg-gray-200">
 
         {/* Left side-bar */}
-        <div className="w-full md:w-1/3 bg-white border-r border-gray-300 flex flex-col">
+        <div
+          className={`w-full md:w-1/3 bg-white border-r border-gray-300 flex flex-col ${
+            selectedPerson ? 'hidden md:flex' : 'flex'
+          }`}
+        >
           <div className="p-3 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-800">Chats</h2>
           </div>
@@ -65,7 +88,7 @@ const Chats = () => {
           </div>
 
           <div className="flex-1 overflow-y-auto">
-            {chatPersons.map(person => (
+            {chatPersons.map((person) => (
               <div
                 key={person.id}
                 onClick={() => setSelectedPerson(person.id)}
@@ -98,23 +121,36 @@ const Chats = () => {
         </div>
 
         {/* Right chat window */}
-        <div className="flex-1 flex flex-col">
+        <div
+          className={`flex-1 flex flex-col ${
+            selectedPerson ? 'flex' : 'hidden md:flex'
+          }`}
+        >
           {selectedPerson ? (
             <>
               {/* Top_bar */}
               <div className="flex items-center gap-3 bg-white p-3 border-b border-gray-300">
+                {/* Back button on mobile */}
+                <button
+                  className="block md:hidden text-blue-900 text-2xl"
+                  onClick={() => setSelectedPerson(null)}
+                >
+                  <i className="ri-arrow-left-line"></i>
+                </button>
+
                 <img
-                  src={chatPersons.find(p => p.id === selectedPerson).image}
+                  src={chatPersons.find((p) => p.id === selectedPerson).image}
                   alt=""
                   className="w-9 h-9 rounded-full object-cover"
                 />
                 <h3 className="text-lg font-semibold text-gray-800">
-                  {chatPersons.find(p => p.id === selectedPerson).name}
+                  {chatPersons.find((p) => p.id === selectedPerson).name}
                 </h3>
               </div>
 
               {/* Messages */}
-              <div className="flex-1 p-4 overflow-y-auto bg-gray-100 space-y-3">
+              <div className="flex-1 p-4 overflow-y-auto bg-gray-100 space-y-3 md:pb-0 pb-20">
+                {/* Messages list */}
                 {messages[selectedPerson]?.map((message, index) => (
                   <div
                     key={index}
@@ -133,8 +169,9 @@ const Chats = () => {
                 ))}
               </div>
 
+
               {/* Message_input */}
-              <div className="flex items-center p-3 bg-white border-t border-gray-300">
+              <div className="flex items-center p-3 bg-white border-t border-gray-300 md:static fixed bottom-0 w-full md:w-auto h-auto">
                 <input
                   type="text"
                   placeholder="Type a message"
@@ -151,7 +188,6 @@ const Chats = () => {
             </div>
           )}
         </div>
-
       </div>
     </>
   );

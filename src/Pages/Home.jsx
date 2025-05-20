@@ -94,12 +94,12 @@ const Home = () => {
               <label className="block mb-1 font-medium text-sm">
                 Phone Number
               </label>
-              <div className="flex mb-3 gap-2">
+              <div className="flex mb-3">
                 <input
                   type="text"
                   value="+91"
                   disabled
-                  className="w-14 p-2 border border-gray-300 rounded bg-gray-100 text-center text-sm"
+                  className="w-10 p-2 border border-gray-300 rounded bg-gray-100 text-center text-sm"
                 />
                 <input
                   type="text"
@@ -108,7 +108,7 @@ const Home = () => {
                     setPhone(e.target.value.replace(/[^0-9]/g, ""))
                   }
                   placeholder="Enter your number"
-                  className="flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#D53269] text-sm"
+                  className="flex-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#D53269] text-sm"
                 />
               </div>
 

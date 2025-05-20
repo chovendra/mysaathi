@@ -34,16 +34,16 @@ const Support_Info = () => {
       {/* Right Icons Section */}
       <div className="w-full lg:w-[25vw] grid grid-cols-2 lg:gap-y-12 lg:gap-x-10 gap-y-12 justify-items-center ">
         {[
-          { img: "BoxLogo1.png ", label: "Find your true match" },
-          { img: "Boxlogo2.png", label: "Love starts with trust" },
-          { img: "Boxlogo3.png", label: "Real connections matter" },
-          { img: "Boxlogo4.png", label: "Embrace lifelong journeys" },
+          { img: "heart.svg", label: "Find your true match" },
+          { img: "shield.svg", label: "Love starts with trust" },
+          { img: "face.svg", label: "Real connections matter" },
+          { img: "life.svg", label: "Embrace lifelong journeys" },
         ].map((item, i) => (
           <div key={i} className="flex flex-col items-center">
             {/* Circle with image */}
-            <div className="w-24 h-24 sm:w-28 sm:h-28  rounded-full flex items-center justify-center bg-blue-800">
+            <div className="w-20 h-20 sm:w-28 sm:h-28  rounded-full flex items-center justify-center bg-rose-400 ">
               <img
-                className="w-12 sm:w-14 object-contain"
+                className="w-10 sm:w-14 object-contain "
                 src={`/images/${item.img}`}
                 alt={`icon-${i}`}
               />

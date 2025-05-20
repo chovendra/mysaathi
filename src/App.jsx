@@ -41,7 +41,7 @@ import MatcheDetails from "./Matches/MatcheDetails";
 function App() {
   // const [count, setCount] = useState(0); // Uncomment if needed
   const location = useLocation();
-  const noFooterRoutes = ["/pd", "/hobbies", "/abouthobbies" , "/familydetails" , "/partnerpreferences" , "/astrological" , "/qualifications" , "/contactdetails" , "/medicaldetails" , "/uploadphotos" , "/aboutyourself"];
+  const noFooterRoutes = ["/pd", "/hobbies", "/abouthobbies" , "/familydetails" , "/partnerpreferences" , "/astrological" , "/qualifications" , "/contactdetails" , "/medicaldetails" , "/uploadphotos" , "/aboutyourself", "/chats"];
 
   return (
     <>

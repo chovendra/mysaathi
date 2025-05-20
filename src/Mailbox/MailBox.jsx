@@ -60,8 +60,8 @@ function ProfileCard({ status }) {
       </div>
 
       <div className="p-4">
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="w-full sm:w-32 sm:h-32 flex-shrink-0 bg-red-900 rounded-md overflow-hidden">
+        <div className="flex sm:flex-row gap-4">
+          <div className="w-22 h-28 sm:w-32 sm:h-32 flex-shrink-0 bg-red-900 rounded-md overflow-hidden">
             <img
               src="/images/profile.png"
               alt="Profile"

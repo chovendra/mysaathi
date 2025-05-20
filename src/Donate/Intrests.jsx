@@ -9,11 +9,11 @@ const Donate = () => {
     <>
     <NavBar />
     <div className=''>
-        <div className="w-full h-[55vh] relative ">
+        <div className=" h-[60vh] relative ">
             <div
             className={`w-full h-full bg-cover bg-center`}
             style={{
-                backgroundImage: `url('/HeaderImages/9.jpg')`,
+                backgroundImage: `url('/images/hand.jpg')`,
                 width: "100%",
                 height: "100%",
                 objectPosition: "center",
@@ -23,20 +23,30 @@ const Donate = () => {
             {/* <div className="absolute w-full h-full bg-black top-0 opacity-30 "></div> */}
     
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-            <h1 className="text-red-700">Home <span className="text-white"> / Donate</span></h1>
-            <h1 className="text-6xl font-bold">Donate</h1>
+            <h1 className="">Home <span className="text-white"> / Find Matches</span></h1>
+            <h1 className="text-6xl font-bold">Find Matches</h1>
             </div>
         </div>
         <div className=''>
-        <DonateFillter />
+  
 
 
         </div>
-        <div className='lg:p-10 p-3'>
+        <div className="w-full lg:w-[100%] h-auto lg:h-full overflow-y-auto">
+        <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 place-items-center">
 
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
         <Cards />
         </div>
         {/* <Footer /> */}
+    </div>
     </div>
     </>
   )

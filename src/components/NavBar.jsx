@@ -15,15 +15,16 @@ const NavBar = () => {
 
   return (
     <nav className="bg-white fixed w-full shadow-blue-300 shadow-md z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between py-2 lg:py-5 h-[70px] lg:h-[80px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between lg:py-5 h-[70px] lg:h-[90px]">
         {/* Logo */}
-        <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center justify-center h-14 w-14 lg:h-[80px] lg:w-[80px]">
+  <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center justify-center h-[65px] w-[100px] lg:h-[100px] lg:w-[160px] overflow-hidden">
   <img
     src="/images/saathi.jpg"
     alt="Logo"
-    className="h-13 w-13 lg:h-[70px] lg:w-[100px] object-cover object-center rounded-full"
+    className="h-[200px] w-[100px] lg:h-[90px] lg:w-[140px] object-contain"
   />
 </Link>
+
 
 
         {/* Desktop Menu */}

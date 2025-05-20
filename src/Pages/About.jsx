@@ -87,7 +87,7 @@ const About = () => {
     {/* Left: Image */}
     <div className="w-full lg:w-[40%] relative z-0">
       <img
-        className="w-full h-[50vh] md:h-[60vh] object-cover object-center rounded-xl shadow-lg transition-all duration-300"
+        className="w-full h-[30vh] md:h-[60vh] object-cover object-center rounded-xl shadow-lg transition-all duration-300"
         src="/images/hand.jpg"
         alt="Helping Hand"
       />
