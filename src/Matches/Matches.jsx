@@ -1,55 +1,86 @@
-import React from 'react'
-import MatchesLeft from './MatchesLeft'
-import MatchesRight from './MatchesRight'
+import React, { useState } from "react";
+import MatchesLeft from "./MatchesLeft";
+import MatchesRight from "./MatchesRight";
 
 const Matches = () => {
+  const [activeTab, setActiveTab] = useState("today");
+
   return (
     <>
-    <div className='w-full h-[110px]'/>
-    <div className='w-full h-[100px] px-5 '>
-    <nav className="flex mb-10" aria-label="Breadcrumb">
-<ol className="inline-flex items-center space-x-1 md:space-x-3 lg:space-x-10">
-<li aria-current="page">
-  <div className="flex items-center underline ">
-    {/* <svg className="mx-1 w-1 h-5" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.12561 1.13672L0.999943 18.8633" stroke="#E5E7EB" stroke-width="1.6" stroke-linecap="round" />
-    </svg> */}
-    <span className="ml-1 text-base font-bold text-indigo-600 md:ml-2 ">Today's Matches</span>
-  </div>
-</li>
-<li className="inline-flex items-center">
-  <a href="javascript:;" className="inline-flex items-center text-base font-bold text-gray-900 hover:text-indigo-800"> My Match </a>
-</li>
-<li>
-  <div className="flex items-center">
-    {/* <svg className="mx-1 w-1 h-5" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.12561 1.13672L0.999943 18.8633" stroke="#E5E7EB" stroke-width="1.6" stroke-linecap="round" />
-    </svg> */}
-    <a href="javascript:;" className="ml-1 text-base font-bold text-gray-900 hover:text-indigo-800 md:ml-2">Recently Viewed</a>
-  </div>
-</li>
-<li>
-  <div className="flex items-center">
-    {/* <svg className="mx-1 w-1 h-5" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.12561 1.13672L0.999943 18.8633" stroke="#E5E7EB" stroke-width="1.6" stroke-linecap="round" />
-    </svg> */}
-    <a href="javascript:;" className="ml-1 text-base font-bold text-gray-900 hover:text-indigo-800 md:ml-2">More Matches</a>
-  </div>
-</li>
+      <div className="w-full h-[90px]"/>
+      <div className="w-full h-[80px] px-5 ">
+        <nav className="flex mb-5" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 md:space-x-3 lg:space-x-10">
+            {/* Today's Matches */}
+            <li aria-current="page">
+              <button
+                onClick={() => setActiveTab("today")}
+                className={`text-base font-bold md:ml-2 pb-1 border-b-2 ${
+                  activeTab === "today"
+                    ? "text-indigo-600 border-indigo-600"
+                    : "text-gray-900 border-transparent hover:text-indigo-800"
+                }`}
+              >
+                Today's Matches
+              </button>
+            </li>
 
-</ol>
-</nav>
-      <h3 className='text-2xl font-bold'>4,564 Matches based on your <span className='text-red-500'>Prefrences</span> </h3>
-    </div>
-    <div className='w-full h-screen flex'>
+            {/* My Match */}
+            <li>
+              <button
+                onClick={() => setActiveTab("my")}
+                className={`text-base font-bold pb-1 border-b-2 ${
+                  activeTab === "my"
+                    ? "text-indigo-600 border-indigo-600"
+                    : "text-gray-900 border-transparent hover:text-indigo-800"
+                }`}
+              >
+                My Match
+              </button>
+            </li>
 
+            {/* Recently Viewed */}
+            <li>
+              <button
+                onClick={() => setActiveTab("recent")}
+                className={`text-base font-bold pb-1 border-b-2 ${
+                  activeTab === "recent"
+                    ? "text-indigo-500 border-indigo-500"
+                    : "text-gray-900 border-transparent hover:text-indigo-800"
+                }`}
+              >
+                Recently Viewed
+              </button>
+            </li>
 
-<MatchesLeft />
-<MatchesRight />
+            {/* More Matches */}
+            <li>
+              <button
+                onClick={() => setActiveTab("more")}
+                className={`text-base font-bold pb-1 border-b-2 ${
+                  activeTab === "more"
+                    ? "text-indigo-600 border-indigo-600"
+                    : "text-gray-900 border-transparent hover:text-indigo-800"
+                }`}
+              >
+                More Matches
+              </button>
+            </li>
+          </ol>
+        </nav>
 
-    </div>
-     </>
-  )
-}
+        <h3 className="text-2xl font-bold">
+          4,564 Matches based on your{" "}
+          <span className="text-red-500">Preferences</span>
+        </h3>
+      </div>
 
-export default Matches
+      <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+        <MatchesLeft />
+        <MatchesRight />
+      </div>
+    </>
+  );
+};
+
+export default Matches;

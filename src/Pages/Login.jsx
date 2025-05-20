@@ -38,11 +38,11 @@ const Login = () => {
 
 
       {/* Right Side (Form) */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 mt-8 ">
         <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-10 overflow-y-auto">
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-28 h-16 bg-red-100 rounded-full mb-4">
-              <img src="/images/saathi.jpg" alt="Logo" />
+          <div className="text-center mb-6 ">
+            <div className="inline-flex items-center justify-center w-28 h-10 bg-red-100 mb-4">
+              <img src="/images/saathi.jpg" alt="Logo"/>
             </div>
             <h2 className="text-2xl font-bold text-gray-800">
               {isLogin ? 'Welcome Back!' : 'Create Account'}
@@ -53,7 +53,7 @@ const Login = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            {/* Full Name */}
+            {/* Full name */}
             {!isLogin && (
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>

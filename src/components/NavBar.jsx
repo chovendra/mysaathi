@@ -14,46 +14,34 @@ const NavBar = () => {
     }`;
 
   return (
-    <nav className="bg-white fixed shadow-blue-300 shadow-md z-20 w-[100%]">
-      <div className="max-w-7xl mx-auto py-2 lg:py-5 px-4 sm:px-6 lg:px-10 flex items-center justify-between  lg:h-[80px] overflow-hidden">
+    <nav className="bg-white fixed w-full shadow-blue-300 shadow-md z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between py-2 lg:py-5 h-[70px] lg:h-[80px]">
         {/* Logo */}
-        <Link to="/" onClick={() => setIsOpen(false)}>
-        <img
-        src="/images/saathi.jpg"
-        alt="Logo"
-        className=" lg:h-[100px] lg:w-[100px] object-cover object-center"
-      />
+        <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center justify-center h-14 w-14 lg:h-[80px] lg:w-[80px]">
+  <img
+    src="/images/saathi.jpg"
+    alt="Logo"
+    className="h-13 w-13 lg:h-[70px] lg:w-[100px] object-cover object-center rounded-full"
+  />
+</Link>
 
-
-
-
-        </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-5 items-center">
+        <div className="hidden md:flex items-center space-x-5">
           <Link to="/" className={navItemClass("/")}>
             Home
           </Link>
           <Link to="/matches" className={navItemClass("/matches")}>
             Matches
           </Link>
-          {/* <Link to="/intrests" className={navItemClass("/intrests")}>
-            Intrests
-          </Link> */}
           <Link to="/mailbox" className={navItemClass("/mailbox")}>
             Mails
           </Link>
           <Link to="/chats" className={navItemClass("/chats")}>
-          Chats
+            Chats
           </Link>
-          {/* <Link to="/membership" className={navItemClass("/membership")}>
-            Membership
-          </Link> */}
-          {/* <Link to="/contact" className={navItemClass("/contact")}>
-            Contact Us
-          </Link> */}
           <Link to="/login">
-            <button className="bg-blue-900 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+            <button className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
               Login / Signup
             </button>
           </Link>
@@ -70,9 +58,9 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Items */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden flex flex-col px-6 py-4 space-y-4 text-xl bg-white shadow-inner">
+        <div className="md:hidden flex flex-col px-6 py-4 space-y-4 text-lg bg-white shadow-inner transition-all duration-300 ease-in-out">
           <Link
             to="/"
             onClick={() => setIsOpen(false)}
@@ -80,7 +68,6 @@ const NavBar = () => {
           >
             Home
           </Link>
-          
           <Link
             to="/matches"
             onClick={() => setIsOpen(false)}
@@ -110,7 +97,7 @@ const NavBar = () => {
           <Link
             to="/profile"
             onClick={() => setIsOpen(false)}
-            className="mx-auto"
+            className="flex justify-center"
           >
             <User className="w-8 h-8 text-gray-700 hover:text-red-600" />
           </Link>
