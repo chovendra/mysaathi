@@ -44,12 +44,12 @@ const MedicalDetails = () => {
       <div className="bg-white min-h-auto">
         <h1 className="text-3xl font-bold text-center text-gray-800">Medical Details</h1>
 
-        <div className="flex items-center justify-center gap-2 mt-6">
+        <div className="flex items-center justify-center gap-0 mt-6">
           {[...Array(11)].map((_, index) => (
             <React.Fragment key={index}>
-              <div className={`w-4 h-4 rounded-full ${index <= 8 ? 'bg-blue-900' : 'bg-gray-300'}`}></div>
+              <div className={`w-2.5 h-2.5 rounded-full ${index <= 8 ? 'bg-blue-900' : 'bg-gray-200'}`}></div>
               {index < 10 && (
-                <div className={`h-1 w-6 ${index <= 7 ? 'bg-blue-900' : 'bg-gray-300'}`}></div>
+                <div className={`h-0.5 w-3 ${index <= 7 ? 'bg-blue-900' : 'bg-gray-200'}`}></div>
               )}
             </React.Fragment>
           ))}

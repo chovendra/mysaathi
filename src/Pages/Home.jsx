@@ -73,8 +73,8 @@ const Home = () => {
             <div className="hidden lg:block w-32"></div>
 
             {/* Right register form */}
-            <div className="lg:w-[420px] w-full bg-white rounded-xl p-6 text-gray-800 mb-10 lg:mt-20">
-              <h2 className="text-xl font-bold text-center mb-2">
+            <div className="lg:w-[420px] w-full bg-white rounded-xl p-6 text-gray-800 mb-5 lg:mt-20">
+              <h2 className="text-xl font-bold text-center">
                 Register, It’s FREE!
               </h2>
 
@@ -108,7 +108,7 @@ const Home = () => {
                     setPhone(e.target.value.replace(/[^0-9]/g, ""))
                   }
                   placeholder="Enter your number"
-                  className="flex-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#D53269] text-sm"
+                  className="flex-1 px-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#D53269] text-sm"
                 />
               </div>
 

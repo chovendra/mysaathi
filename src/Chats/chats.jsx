@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const Chats = () => {
   const [selectedPerson, setSelectedPerson] = useState(null);
+  const [popupImage, setPopupImage] = useState(null); 
 
   const chatPersons = [
     {
@@ -34,24 +35,6 @@ const Chats = () => {
     1: [
       { from: 'me', text: 'Hey Rahul, kya haal hai?' },
       { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
-      { from: 'me', text: 'Hey Rahul, kya haal hai?' },
-      { from: 'Rahul Mehra', text: 'Badiya yaar!' },
     ],
     2: [
       { from: 'me', text: 'Hey Ananya, project bhej dena.' },
@@ -65,7 +48,7 @@ const Chats = () => {
 
   return (
     <>
-      <div className="w-full h-[95px]" />
+      <div className="w-full h-[85px]" />
 
       <div className="flex h-[calc(100vh-95px)] bg-gray-200">
 
@@ -99,7 +82,11 @@ const Chats = () => {
                 <img
                   src={person.image}
                   alt={person.name}
-                  className="w-10 h-10 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setPopupImage(person.image);
+                  }}
                 />
                 <div className="flex-1">
                   <div className="flex justify-between items-center">
@@ -128,9 +115,8 @@ const Chats = () => {
         >
           {selectedPerson ? (
             <>
-              {/* Top_bar */}
+              {/* Top bar */}
               <div className="flex items-center gap-3 bg-white p-3 border-b border-gray-300">
-                {/* Back button on mobile */}
                 <button
                   className="block md:hidden text-blue-900 text-2xl"
                   onClick={() => setSelectedPerson(null)}
@@ -141,7 +127,10 @@ const Chats = () => {
                 <img
                   src={chatPersons.find((p) => p.id === selectedPerson).image}
                   alt=""
-                  className="w-9 h-9 rounded-full object-cover"
+                  className="w-10 h-10 rounded-full object-cover cursor-pointer"
+                  onClick={() =>
+                    setPopupImage(chatPersons.find((p) => p.id === selectedPerson).image)
+                  }
                 />
                 <h3 className="text-lg font-semibold text-gray-800">
                   {chatPersons.find((p) => p.id === selectedPerson).name}
@@ -150,7 +139,6 @@ const Chats = () => {
 
               {/* Messages */}
               <div className="flex-1 p-4 overflow-y-auto bg-gray-100 space-y-3 md:pb-0 pb-20">
-                {/* Messages list */}
                 {messages[selectedPerson]?.map((message, index) => (
                   <div
                     key={index}
@@ -169,8 +157,7 @@ const Chats = () => {
                 ))}
               </div>
 
-
-              {/* Message_input */}
+              {/* Message input */}
               <div className="flex items-center p-3 bg-white border-t border-gray-300 md:static fixed bottom-0 w-full md:w-auto h-auto">
                 <input
                   type="text"
@@ -189,6 +176,31 @@ const Chats = () => {
           )}
         </div>
       </div>
+
+      {/* Image Popup Modal */}
+        {popupImage && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+            onClick={() => setPopupImage(null)}
+          >
+            <div
+              className="relative max-w-[95vw] max-h-[100vh] p-0"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={popupImage}
+                alt="Popup"
+                className="rounded-lg w-auto h-auto max-h-[100vh] max-w-[100vw] object-contain"
+              />
+              <button
+                onClick={() => setPopupImage(null)}
+                className="absolute top-[-12px] right-[-12px] bg-white text-black rounded-full w-5 h-5 flex items-center justify-center shadow-lg text-2xl"
+              >
+                &times;
+              </button>
+            </div>
+          </div>
+        )}
     </>
   );
 };

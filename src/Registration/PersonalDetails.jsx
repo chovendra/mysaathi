@@ -5,8 +5,7 @@ const PersonalDetails = () => {
   const [gender, setGender] = useState("");
   const [dob, setDob] = useState("");
   const [childrenCount, setChildrenCount] = useState(0);
-  const [currentStep, setCurrentStep] = useState(1);
-
+  const [maritalStatus, setMaritalStatus] = useState(""); 
   const navigate = useNavigate();
 
   const increaseCount = () => {
@@ -32,24 +31,24 @@ const PersonalDetails = () => {
         </h1>
 
         {/* Progress */}
-        <div className="flex items-center justify-center gap-2 mt-6">
-                  {[...Array(11)].map((_, index) => (
-                    <React.Fragment key={index}>
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          index <= 0 ? "bg-blue-900" : "bg-gray-300"
-                        }`}
-                      ></div>
-                      {index < 10 && (
-                        <div
-                          className={`h-1 w-6 ${
-                            index <= -1 ? "bg-blue-900" : "bg-gray-300"
-                          }`}
-                        ></div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
+        <div className="flex items-center justify-center gap-0 mt-6">
+          {[...Array(11)].map((_, index) => (
+            <React.Fragment key={index}>
+              <div
+                className={`w-2.5 h-2.5 rounded-full ${
+                  index <= 0 ? "bg-blue-900" : "bg-gray-200"
+                }`}
+              ></div>
+              {index < 10 && (
+                <div
+                  className={`h-0.5 w-3 ${
+                    index <= -1 ? "bg-blue-900" : "bg-gray-200"
+                  }`}
+                ></div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
 
         {/* Form */}
         <div className="max-w-md mx-auto p-6 bg-white rounded-xl mt-6 space-y-5 pb-36">
@@ -130,70 +129,99 @@ const PersonalDetails = () => {
             <label className="font-medium">Marital Status</label>
             <div className="flex gap-4 mt-1">
               <label>
-                <input type="radio" name="marital" className="mr-1" /> Unmarried
+                <input
+                  type="radio"
+                  name="marital"
+                  className="mr-1"
+                  value="Unmarried"
+                  checked={maritalStatus === "Unmarried"}
+                  onChange={(e) => setMaritalStatus(e.target.value)}
+                />
+                Unmarried
               </label>
               <label>
-                <input type="radio" name="marital" className="mr-1" /> Divorced
+                <input
+                  type="radio"
+                  name="marital"
+                  className="mr-1"
+                  value="Divorced"
+                  checked={maritalStatus === "Divorced"}
+                  onChange={(e) => setMaritalStatus(e.target.value)}
+                />
+                Divorced
               </label>
               <label>
-                <input type="radio" name="marital" className="mr-1" /> Widowed
+                <input
+                  type="radio"
+                  name="marital"
+                  className="mr-1"
+                  value="Widowed"
+                  checked={maritalStatus === "Widowed"}
+                  onChange={(e) => setMaritalStatus(e.target.value)}
+                />
+                Widowed
               </label>
             </div>
           </div>
 
-          {/* How long married */}
-          <div>
-            <label className="font-medium">How long were you married?</label>
-            <div className="flex gap-3 mt-1">
-              <select className="w-1/2 border border-gray-300 rounded p-2">
-                <option>Year</option>
-                <option>1</option>
-                <option>2</option>
-              </select>
-              <select className="w-1/2 border border-gray-300 rounded p-2">
-                <option>Month</option>
-                <option>1</option>
-                <option>2</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Children */}
-          <div>
-            <label className="font-medium">Children, if any?</label>
-            <div className="flex items-center mt-1">
-              <button
-                type="button"
-                onClick={decreaseCount}
-                className="text-xl font-bold bg-gray-300 w-8 h-8 flex items-center justify-center rounded"
-              >
-                -
-              </button>
-              <div className="text-lg font-semibold w-8 text-center">
-                {childrenCount.toString().padStart(2, "0")}
+          {/* Conditionally show these fields only if maritalStatus is Divorced or Widowed */}
+          {(maritalStatus === "Divorced" || maritalStatus === "Widowed") && (
+            <>
+              {/* How long married */}
+              <div>
+                <label className="font-medium">How long were you married?</label>
+                <div className="flex gap-3 mt-1">
+                  <select className="w-1/2 border border-gray-300 rounded p-2">
+                    <option>Year</option>
+                    <option>1</option>
+                    <option>2</option>
+                  </select>
+                  <select className="w-1/2 border border-gray-300 rounded p-2">
+                    <option>Month</option>
+                    <option>1</option>
+                    <option>2</option>
+                  </select>
+                </div>
               </div>
-              <button
-                type="button"
-                onClick={increaseCount}
-                className="text-xl font-bold bg-gray-300 w-8 flex items-center justify-center rounded"
-              >
-                +
-              </button>
-            </div>
-          </div>
 
-          {/* Living with children */}
-          <div>
-            <label className="font-medium">Living with children?</label>
-            <div className="flex gap-4 mt-1">
-              <label>
-                <input type="radio" name="living" className="mr-1" /> Yes
-              </label>
-              <label>
-                <input type="radio" name="living" className="mr-1" /> No
-              </label>
-            </div>
-          </div>
+              {/* Children */}
+              <div>
+                <label className="font-medium">Children, if any?</label>
+                <div className="flex items-center mt-1">
+                  <button
+                    type="button"
+                    onClick={decreaseCount}
+                    className="text-xl font-bold bg-gray-300 w-8 h-8 flex items-center justify-center rounded"
+                  >
+                    -
+                  </button>
+                  <div className="text-lg font-semibold w-8 text-center">
+                    {childrenCount.toString().padStart(2, "0")}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={increaseCount}
+                    className="text-xl font-bold bg-gray-300 w-8 flex items-center justify-center rounded"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Living with children */}
+              <div>
+                <label className="font-medium">Living with children?</label>
+                <div className="flex gap-4 mt-1">
+                  <label>
+                    <input type="radio" name="living" className="mr-1" /> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="living" className="mr-1" /> No
+                  </label>
+                </div>
+              </div>
+            </>
+          )}
 
           {/* Complexion */}
           <div>
@@ -208,13 +236,13 @@ const PersonalDetails = () => {
         </div>
 
         {/* Bottom Buttons */}
-        <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
-           <button
-      onClick={() => navigate("/")}
-      className="text-white font-medium px-4 py-2 border border-white rounded"
-    >
-      Cancel
-    </button>
+        <div className="fixed bottom-0 left-0 w-full bg-blue-900 py-3 flex justify-evenly">
+          <button
+            onClick={() => navigate("/")}
+            className="text-white font-medium px-4 py-2 border border-white rounded"
+          >
+            Cancel
+          </button>
           <button
             onClick={() => navigate("/hobbies")}
             disabled={!formValid}

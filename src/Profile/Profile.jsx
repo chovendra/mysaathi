@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Profile = () => {
+  const [isImageOpen, setIsImageOpen] = useState(false);
+
   return (
-    <div className="w-full bg-gray-100 min-h-screen">
+    <div className="w-full bg-gray-100 min-h-screen relative">
       {/* Topbar */}
       <div className="bg-white h-15 w-full shadow-md"></div>
 
@@ -25,20 +27,24 @@ const Profile = () => {
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
             <div className="flex items-center space-x-4">
               <img
+                onClick={() => setIsImageOpen(true)}
                 src="https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg"
                 alt="Profile"
-                className="w-14 h-14 rounded-full object-cover"
+                className="w-14 h-14 rounded-full object-cover cursor-pointer"
               />
               <div>
                 <h2 className="text-lg font-semibold">Arvind Pandey</h2>
                 <p className="text-sm text-gray-500">ArvindPandey@gmail.com</p>
               </div>
             </div>
-            <button className="mt-4 sm:mt-0 bg-blue-900 text-white px-4 py-2 rounded">Edit</button>
+            <button className="mt-4 sm:mt-0 bg-blue-900 text-white px-4 py-2 rounded">
+              Edit
+            </button>
           </div>
 
           {/* Form */}
           <form className="space-y-4">
+            {/* Full Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700">Full Name</label>
               <input
@@ -48,6 +54,7 @@ const Profile = () => {
               />
             </div>
 
+            {/* PAN */}
             <div>
               <label className="block text-sm font-medium text-gray-700">PAN Card Number</label>
               <input
@@ -57,6 +64,7 @@ const Profile = () => {
               />
             </div>
 
+            {/* Email */}
             <div>
               <label className="block text-sm font-medium text-gray-700">Registered Email</label>
               <input
@@ -136,7 +144,8 @@ const Profile = () => {
         </div>
 
 
-         <div>
+         {/* Phone */}
+            <div>
               <label className="block text-sm font-medium text-gray-700">Phone Number</label>
               <input
                 type="tel"
@@ -145,6 +154,7 @@ const Profile = () => {
               />
             </div>
 
+            {/* Pincode */}
             <div>
               <label className="block text-sm font-medium text-gray-700">Pincode</label>
               <input
@@ -172,6 +182,25 @@ const Profile = () => {
           </form>
         </div>
       </div>
+
+      {/* Fullscreen Image Overlay */}
+      {isImageOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <div className="relative">
+            <img
+              src="https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg"
+              alt="Full View"
+              className="max-w-full max-h-[90vh] rounded-lg"
+            />
+            <button
+              onClick={() => setIsImageOpen(false)}
+              className="absolute -top-4 right-0 text-white bg-red-600 rounded-full w-8 h-8 flex items-center justify-center text-lg"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

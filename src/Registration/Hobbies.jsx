@@ -58,24 +58,25 @@ const Hobbies = () => {
           Your Hobbies
         </h1>
 
-        <div className="flex items-center justify-center gap-2 mt-6">
-                  {[...Array(11)].map((_, index) => (
-                    <React.Fragment key={index}>
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          index <= 1 ? "bg-blue-900" : "bg-gray-300"
-                        }`}
-                      ></div>
-                      {index < 10 && (
-                        <div
-                          className={`h-1 w-6 ${
-                            index <= 0 ? "bg-blue-900" : "bg-gray-300"
-                          }`}
-                        ></div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
+        <div className="flex items-center justify-center gap-0 mt-6">
+            {[...Array(11)].map((_, index) => (
+              <React.Fragment key={index}>
+                <div
+                  className={`w-2.5 h-2.5 rounded-full ${
+                    index <= 1 ? "bg-blue-900" : "bg-gray-200"
+                  }`}
+                ></div>
+                {index < 10 && (
+                  <div
+                    className={`h-0.5 w-3 ${
+                      index <= 0 ? "bg-blue-900" : "bg-gray-200"
+                    }`}
+                  ></div>
+                )}
+              </React.Fragment>
+            ))}
+        </div>
+
 
         <p className="text-center text-gray-600 mt-4">
           Please select at least 5 hobbies!
@@ -121,7 +122,7 @@ const Hobbies = () => {
           </div>
         </div>
 
-        <div className="fixed bottom-0 left-0 w-full bg-blue-500 py-3 flex justify-evenly">
+        <div className="fixed bottom-0 left-0 w-full bg-blue-900 py-3 flex justify-evenly">
           <button
             onClick={() => navigate("/pd")}
             className="text-white font-medium px-4 py-2 border border-white rounded"

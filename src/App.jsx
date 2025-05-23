@@ -66,6 +66,7 @@ function App() {
           />
           <Route path="/privacy_policy" element={<PrivacyP />} />
           <Route path="/cards/" element={<Cards />} />
+          <Route path="/matchedetails/:id" element={<MatcheDetails />} />
           <Route path="/donate/:id" element={<DonateDetails />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/pd" element={<PersonalDetails />} />

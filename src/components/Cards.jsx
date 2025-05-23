@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const Cards = () => {
+const Cards = (id) => {
+  const params = useParams();
   const cardData = [
     {
       id: 1,
@@ -26,7 +27,7 @@ const Cards = () => {
 
   return (
     <div className="container mx-auto py-5">
-  <div className="flex flex-wrap justify-center gap-6">
+  <Link to={`/matchedetails/${id}`} className="flex flex-wrap justify-center gap-6">
     {cardData.slice(0, visibleCards).map((card) => (
       <div
         key={card.id}
@@ -62,7 +63,7 @@ const Cards = () => {
         </div>
       </div>
     ))}
-  </div>
+  </Link>
 </div>
 
 

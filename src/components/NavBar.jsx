@@ -36,7 +36,7 @@ const NavBar = () => {
             Matches
           </Link>
           <Link to="/mailbox" className={navItemClass("/mailbox")}>
-            Mail Box
+            Mailbox
           </Link>
           <Link to="/chats" className={navItemClass("/chats")}>
             Chats
