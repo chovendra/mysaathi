@@ -30,13 +30,13 @@ const Cards = () => {
     {cardData.slice(0, visibleCards).map((card) => (
       <div
         key={card.id}
-        className="bg-white rounded-xl shadow-lg text-center transform hover:scale-105 transition border border-gray-200 w-[350px] h-auto"
+        className="bg-white rounded-xl shadow-lg text-center transform hover:scale-101 transition border border-gray-200 w-[350px] h-auto"
       >
         <div className="relative">
           <img
             src={card.image}
             alt={card.subtitle}
-            className="w-full h-80 object-cover object-fit rounded-t-xl"
+            className="w-full h-80 object-cover object-fit rounded-t-xl cursor-pointer"
           />
      
           <div className="absolute bottom-2 right-2  bg-opacity-60 text-white text-xs px-2 py-1 rounded">
@@ -52,10 +52,10 @@ const Cards = () => {
           <p className="text-[13px] text-gray-600 mt-1">{card.hobby}</p>
 
           <div className="flex gap-3 mt-3">
-            <button className="bg-blue-900 text-white px-4 py-2 rounded-lg text-[13.5px] hover:bg-blue-800 transition w-1/2">
+            <button className="bg-blue-900 text-white px-4 py-2 rounded-lg text-[13.5px] hover:bg-blue-800 transition w-1/2 cursor-pointer">
               Send Interest
             </button>
-            <button className="border border-blue-900 text-blue-900 px-4 py-2 rounded-lg text-[13.5px] hover:bg-blue-50 transition w-1/2">
+            <button className="border border-blue-900 text-blue-900 px-4 py-2 rounded-lg text-[13.5px] hover:bg-blue-50 transition w-1/2 cursor-pointer cursor-pointer">
               Shortlist
             </button>
           </div>

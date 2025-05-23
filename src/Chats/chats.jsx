@@ -65,9 +65,9 @@ const Chats = () => {
 
   return (
     <>
-      <div className="w-full h-[75px]" />
+      <div className="w-full h-[95px]" />
 
-      <div className="flex h-[calc(100vh-75px)] bg-gray-200">
+      <div className="flex h-[calc(100vh-95px)] bg-gray-200">
 
         {/* Left side-bar */}
         <div

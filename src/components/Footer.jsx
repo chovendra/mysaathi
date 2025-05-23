@@ -64,26 +64,44 @@ const Footer = () => {
               </a>
               </Link>
             </li>
+            <li>
+              <Link to={'/faq'} className="hover:underline">
+                FAQs
+             </Link>
+            </li>
           </ul>
         </div>
 
         {/* Column 3 */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">Help & Support</h3>
+          <h3 className="font-semibold text-lg mb-4">Pages</h3>
           <ul className="space-y-2">
             <li>
+              <Link to={"/"}
+              >
               <a href="#" className="hover:underline">
-                Contact Us
+                Home
               </a>
+              </Link>
             </li>
             <li>
+              <Link to={"/matches"}
+              >
               <a href="#" className="hover:underline">
-                Feedback
+                Matches
               </a>
+              </Link>
             </li>
             <li>
-              <Link to={'/faq'} className="hover:underline">
-                FAQs
+              <Link to={"/mailbox"}>
+              <a href="" className="hover:underline">
+                Mail Box
+              </a>
+              </Link>
+            </li>
+            <li>
+              <Link to={'/chats'} className="hover:underline">
+                Chats
              </Link>
             </li>
           </ul>

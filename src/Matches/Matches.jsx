@@ -17,7 +17,7 @@ const Matches = () => {
 
   return (
     <>
-      <div className="w-full h-[90px]" />
+      <div className="w-full h-[100px]" />
       <div className="w-full h-[80px] px-5 ">
         {/* Scrollable button nav */}
         <nav className="overflow-x-auto scrollbar-hide">
@@ -26,7 +26,7 @@ const Matches = () => {
               <li key={tab.id}>
                 <button
                   onClick={() => setActiveTab(tab.id)}
-                  className={`whitespace-nowrap text-base font-bold pb-1 border-b-2 ${
+                  className={`whitespace-nowrap text-base font-bold pb-1 border-b-2 cursor-pointer ${
                     activeTab === tab.id
                       ? "text-indigo-600 border-indigo-600"
                       : "text-gray-900 border-transparent hover:text-indigo-800"
@@ -40,8 +40,8 @@ const Matches = () => {
         </nav>
 
         <h3 className="text-2xl font-bold mt-4">
-          4,564 Matches based on your{" "}
-          <span className="text-red-500">Preferences</span>
+          {/* 4,564 Matches based on your{" "} */}
+          {/* <span className="text-red-500">Preferences</span> */}
         </h3>
       </div>
 

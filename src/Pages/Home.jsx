@@ -60,8 +60,8 @@ const Home = () => {
           <div className="relative z-10 flex flex-col lg:flex-row flex-wrap items-center justify-start h-full px-5 lg:px-10 py-10 gap-y-6">
 
             {/* Left_text_section */}
-            <div className="lg:w-1/2 w-full text-left lg:mb-0 lg:pl-5">
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">
+            <div className="lg:w-1/2 w-full text-left lg:mb-5 lg:pl-0">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                 {slides[currentSlide].title}
               </h1>
               <p className="text-base md:text-xl lg:text-2xl text-white">

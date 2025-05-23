@@ -13,7 +13,7 @@ export default function MailBox() {
 
   return (
     <>
-      <div className="w-full h-[80px]" />
+      <div className="w-full h-[95px]" />
 
       <div className="flex flex-col md:flex-row bg-white">
   {/* Sidebar */}
@@ -24,7 +24,7 @@ export default function MailBox() {
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`block font-medium ${
+          className={`block font-medium cursor-pointer ${
             activeTab === tab.id
               ? "text-blue-600"
               : "text-gray-700 hover:text-blue-600"
@@ -65,7 +65,7 @@ function ProfileCard({ status }) {
             <img
               src="/images/profile.png"
               alt="Profile"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover cursor-pointer"
             />
           </div>
 
@@ -100,7 +100,7 @@ function ProfileCard({ status }) {
           <div className="w-1/2 p-3 text-center text-gray-500">Pending</div>
         )}
         <div className="w-1/2 border-l p-3 text-center border-gray-200">
-          <button className="text-blue-600 hover:text-blue-800 font-medium">
+          <button className="text-blue-600 hover:text-blue-800 font-medium cursor-pointer">
             Send Message
           </button>
         </div>

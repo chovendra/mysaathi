@@ -4,7 +4,7 @@ const Profile = () => {
   return (
     <div className="w-full bg-gray-100 min-h-screen">
       {/* Topbar */}
-      <div className="bg-white h-12 w-full shadow-md"></div>
+      <div className="bg-white h-15 w-full shadow-md"></div>
 
       {/* Main_section */}
       <div className="max-w-3xl mx-auto p-10">
