@@ -18,7 +18,7 @@ const Matches = () => {
   return (
     <>
       <div className="w-full h-[100px]" />
-      <div className="w-full h-[80px] px-5 ">
+      <div className=" px-5 ">
         {/* Scrollable button nav */}
         <nav className="overflow-x-auto scrollbar-hide">
           <ol className="flex space-x-6 md:space-x-8 lg:space-x-10 pb-3">
@@ -39,7 +39,7 @@ const Matches = () => {
           </ol>
         </nav>
 
-        <h3 className="text-2xl font-bold mt-4">
+        <h3 className="text-2xl font-bold">
           {/* 4,564 Matches based on your{" "} */}
           {/* <span className="text-red-500">Preferences</span> */}
         </h3>
