@@ -179,28 +179,29 @@ const Chats = () => {
 
       {/* Image Popup Modal */}
         {popupImage && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-            onClick={() => setPopupImage(null)}
-          >
-            <div
-              className="relative max-w-[95vw] max-h-[100vh] p-0"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={popupImage}
-                alt="Popup"
-                className="rounded-lg w-auto h-auto max-h-[100vh] max-w-[100vw] object-contain"
-              />
-              <button
-                onClick={() => setPopupImage(null)}
-                className="absolute top-[-12px] right-[-12px] bg-white text-black rounded-full w-5 h-5 flex items-center justify-center shadow-lg text-2xl"
-              >
-                &times;
-              </button>
-            </div>
-          </div>
-        )}
+  <div
+    className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+    onClick={() => setPopupImage(null)}
+  >
+    <div
+      className="relative w-full h-full flex items-center justify-center p-4"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <img
+        src={popupImage}
+        alt="Popup"
+        className="rounded-lg w-[95vw] h-auto max-h-[95vh] object-contain shadow-2xl"
+      />
+      <button
+        onClick={() => setPopupImage(null)}
+        className="absolute top-5 right-5 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-3xl shadow-lg"
+      >
+        &times;
+      </button>
+    </div>
+  </div>
+)}
+
     </>
   );
 };

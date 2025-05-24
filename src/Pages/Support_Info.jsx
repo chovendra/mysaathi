@@ -41,7 +41,7 @@ const Support_Info = () => {
         ].map((item, i) => (
           <div key={i} className="flex flex-col items-center">
             {/* Circle with image */}
-            <div className="w-20 h-20 sm:w-28 sm:h-28  rounded-full flex items-center justify-center bg-rose-400 ">
+            <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full flex items-center justify-center bg-rose-400 hover:bg-rose-600 hover:shadow-lg transition duration-300">
               <img
                 className="w-10 sm:w-14 object-contain "
                 src={`/images/${item.img}`}
